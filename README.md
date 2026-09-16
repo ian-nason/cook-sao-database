@@ -73,6 +73,9 @@ is kept in `<column>_raw`.
 - **`received_date` is the time axis** the Office used in its own reports; `arrest_date`
   and the incident dates come from the arresting agency and can be years earlier.
 - Demographics are as recorded by the Office; `age_at_incident` is at the incident date.
+- **Placeholder dates survive.** Only dates outside 1900-2030 are NULLed; the portal also
+  carries in-range placeholders (`incident_begin_date` 1901-01-01, `felony_review_date`
+  in the 1930s, `age_at_incident` above 100). Bound any date arithmetic to 2000+.
 
 ## Build
 
