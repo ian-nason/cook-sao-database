@@ -1,0 +1,21 @@
+repo: Nason/cook-sao-database
+file: cook-sao.duckdb
+pretty_name: Cook County State's Attorney felony cases (intake, initiation, dispositions, sentencing, diversion), 2011-2024
+title: Cook County State's Attorney Felony Case Database
+license: other
+tags: [criminal-justice, prosecution, courts, cook-county, chicago, duckdb, datapond]
+size_category: 1M<n<10M
+alias: cook_sao
+table_columns: [description, row_count, column_count]
+intro: |
+  The Cook County (Chicago) State's Attorney's Office published five case-level datasets
+  covering every felony case it received from 2011 until it closed the series on
+  2024-12-30: intake (felony review), initiation (charges, arraignment, bond),
+  dispositions, sentencing and diversion referrals. Each is one table here, typed from the
+  portal's own column metadata and joinable on case_id / case_participant_id / charge_id.
+quick_start_sql: |
+  SELECT EXTRACT(YEAR FROM received_date) AS year, felony_review_result, COUNT(*) AS n
+  FROM "cook-sao".intake GROUP BY 1, 2 ORDER BY 1, 3 DESC;
+footer: |
+  Build pipeline, the SAO data glossary and caveats: https://github.com/ian-nason/cook-sao-database
+  Source: Cook County open-data portal, https://datacatalog.cookcountyil.gov (public domain).

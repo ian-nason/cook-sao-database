@@ -1,0 +1,909 @@
+{
+ "intake": {
+  "id": "3k7z-hchi",
+  "name": "Intake",
+  "description": "This dataset is no longer actively maintained as of 12/30/2024. Please visit the site below to explore data dashboards published by the State\u2019s Attorney\u2019s Office beginning 2025.\n<a href=\"https://www.cookcountystatesattorney.org/data-dashboards\">Data Dashboards | Cook County State's Attorney</a>\n\nThe intake data presented in this data reflects the cases brought in for review. Each row represents a potential defendant in a case.",
+  "attribution": "Cook County State's Attorney's Office",
+  "attributionLink": "https://www.cookcountystatesattorney.org/",
+  "rowsUpdatedAt": 1775141400,
+  "license": "Public Domain",
+  "columns": [
+   {
+    "name": "CASE_ID",
+    "fieldName": "case_id",
+    "type": "number",
+    "description": "Internal unique identifier for each case "
+   },
+   {
+    "name": "CASE_PARTICIPANT_ID",
+    "fieldName": "case_participant_id",
+    "type": "number",
+    "description": "Internal unique identifier for each defendant associated with a case "
+   },
+   {
+    "name": "RECEIVED_DATE",
+    "fieldName": "received_date",
+    "type": "calendar_date",
+    "description": "Date when Felony Review Unit received the case "
+   },
+   {
+    "name": "OFFENSE_CATEGORY",
+    "fieldName": "offense_category",
+    "type": "text",
+    "description": "Broad offense category before specific charges are filed on a case "
+   },
+   {
+    "name": "PARTICIPANT_STATUS",
+    "fieldName": "participant_status",
+    "type": "text",
+    "description": "Status of a case brought against a person. This status does not necessarily come from Felony Review. "
+   },
+   {
+    "name": "AGE_AT_INCIDENT",
+    "fieldName": "age_at_incident",
+    "type": "number",
+    "description": "Age of defendant at date of incident, as recorded by law enforcement or self-reported by defendant"
+   },
+   {
+    "name": "RACE",
+    "fieldName": "race",
+    "type": "text",
+    "description": "Race of defendant reported by law enforcement or self-reported"
+   },
+   {
+    "name": "GENDER",
+    "fieldName": "gender",
+    "type": "text",
+    "description": "Gender of defendant reported by law enforcement or self-reported"
+   },
+   {
+    "name": "INCIDENT_CITY",
+    "fieldName": "incident_city",
+    "type": "text",
+    "description": "The city where the offense took place"
+   },
+   {
+    "name": "INCIDENT_BEGIN_DATE",
+    "fieldName": "incident_begin_date",
+    "type": "calendar_date",
+    "description": "Date offense occurred/began"
+   },
+   {
+    "name": "INCIDENT_END_DATE",
+    "fieldName": "incident_end_date",
+    "type": "calendar_date",
+    "description": "Date offense ended"
+   },
+   {
+    "name": "LAW_ENFORCEMENT_AGENCY",
+    "fieldName": "law_enforcement_agency",
+    "type": "text",
+    "description": "Law Enforcement agency associated with the arrest "
+   },
+   {
+    "name": "LAW_ENFORCEMENT_UNIT",
+    "fieldName": "unit",
+    "type": "text",
+    "description": "Law Enforcement Unit within Chicago Police Department associated with the arrest "
+   },
+   {
+    "name": "ARREST_DATE",
+    "fieldName": "arrest_date",
+    "type": "calendar_date",
+    "description": "Date and time of arrest "
+   },
+   {
+    "name": "FELONY_REVIEW_DATE",
+    "fieldName": "felony_review_date",
+    "type": "calendar_date",
+    "description": "Date Felony Review result was reached "
+   },
+   {
+    "name": "FELONY_REVIEW_RESULT",
+    "fieldName": "felony_review_result",
+    "type": "text",
+    "description": "Result of the Felony Review process"
+   },
+   {
+    "name": "UPDATE_OFFENSE_CATEGORY",
+    "fieldName": "update_offense_category",
+    "type": "text",
+    "description": "Offense category for the case updated based upon the primary charge "
+   }
+  ]
+ },
+ "initiation": {
+  "id": "7mck-ehwz",
+  "name": "Initiation",
+  "description": "This dataset is no longer actively maintained as of 12/30/2024. Please visit the site below to explore data dashboards published by the State\u2019s Attorney\u2019s Office beginning 2025.\n<a href=\"https://www.cookcountystatesattorney.org/data-dashboards\">Data Dashboards | Cook County State's Attorney</a>\n\nThe Initiation results data presented here reflects all of the arrests that came through the door of the State's Attorneys Office (SAO). An initiation is how an arrest turns into a \u201ccase\u201d in the courts. Most cases are initiated through a process known as felony review, in which SAO attorneys make a decision whether or not to prosecute. Cases may also be indicted by a grand jury or, in narcotics cases, filed directly by law enforcement (labeled \"BOND SET (Narcotics)\" in this data). Included in this data set are the defendant counts by initiation and year. This data includes felony cases handled by the Criminal, Narcotics, and Special Prosecution Bureaus. It does not include information about cases processed through the Juvenile Justice and Civil Actions Bureaus.",
+  "attribution": "Cook County State's Attorney's Office",
+  "attributionLink": "https://www.cookcountystatesattorney.org/",
+  "rowsUpdatedAt": 1775141257,
+  "license": "Public Domain",
+  "columns": [
+   {
+    "name": "CASE_ID",
+    "fieldName": "case_id",
+    "type": "number",
+    "description": "Internal unique identifier for each case"
+   },
+   {
+    "name": "CASE_PARTICIPANT_ID",
+    "fieldName": "case_participant_id",
+    "type": "number",
+    "description": "Internal unique identifier for each defendant associated with a case "
+   },
+   {
+    "name": "RECEIVED_DATE",
+    "fieldName": "received_date",
+    "type": "calendar_date",
+    "description": "Date when Felony Review Unit received the case "
+   },
+   {
+    "name": "OFFENSE_CATEGORY",
+    "fieldName": "offense_category",
+    "type": "text",
+    "description": "Broad offense category before specific charges are filed on a case "
+   },
+   {
+    "name": "PRIMARY_CHARGE_FLAG",
+    "fieldName": "primary_charge",
+    "type": "checkbox",
+    "description": "A binary flag indicating whether this row records the most severe charge against the accused"
+   },
+   {
+    "name": "CHARGE_ID",
+    "fieldName": "charge_id",
+    "type": "number",
+    "description": "Internal unique identifier for each charge filed "
+   },
+   {
+    "name": "CHARGE_VERSION_ID",
+    "fieldName": "charge_version_id",
+    "type": "number",
+    "description": "Internal unique identifier for each version of a charge associated with charges filed "
+   },
+   {
+    "name": "CHARGE_OFFENSE_TITLE",
+    "fieldName": "charge_offense_title",
+    "type": "text",
+    "description": "Formal charge title against the defendant "
+   },
+   {
+    "name": "CHARGE_COUNT",
+    "fieldName": "charge_count",
+    "type": "number",
+    "description": "Number of charges associated with one defendant in one case "
+   },
+   {
+    "name": "CHAPTER",
+    "fieldName": "chapter",
+    "type": "text",
+    "description": "Legal chapter for the charge "
+   },
+   {
+    "name": "ACT",
+    "fieldName": "act",
+    "type": "text",
+    "description": "Legal act for the charge "
+   },
+   {
+    "name": "SECTION",
+    "fieldName": "section",
+    "type": "text",
+    "description": "Legal section for the charge  "
+   },
+   {
+    "name": "CLASS",
+    "fieldName": "class",
+    "type": "text",
+    "description": "Legal class for the charge"
+   },
+   {
+    "name": "AOIC",
+    "fieldName": "aoic",
+    "type": "text",
+    "description": "Administrative Office of the Illinois Courts ID for a charge\u2019s relevant statute "
+   },
+   {
+    "name": "EVENT",
+    "fieldName": "event",
+    "type": "text",
+    "description": "Manner in which charge was formally filed "
+   },
+   {
+    "name": "EVENT_DATE",
+    "fieldName": "event_date",
+    "type": "calendar_date",
+    "description": "Date charge was formally filed "
+   },
+   {
+    "name": "FINDING_NO_PROBABLE_CAUSE",
+    "fieldName": "finding_no_probable_cause",
+    "type": "number",
+    "description": "Result of the preliminary examination (preliminary hearing)"
+   },
+   {
+    "name": "ARRAIGNMENT_DATE",
+    "fieldName": "arraignment_date",
+    "type": "calendar_date",
+    "description": "Date of the arraignment"
+   },
+   {
+    "name": "BOND_DATE_INITIAL",
+    "fieldName": "bond_date_initial",
+    "type": "calendar_date",
+    "description": "Date bond set at bond court "
+   },
+   {
+    "name": "BOND_DATE_CURRENT",
+    "fieldName": "bond_date_current",
+    "type": "calendar_date",
+    "description": "Date bond set/updated "
+   },
+   {
+    "name": "BOND_TYPE_INITIAL",
+    "fieldName": "bond_type_initial",
+    "type": "text",
+    "description": "Initial type set at bond court"
+   },
+   {
+    "name": "BOND_TYPE_CURRENT",
+    "fieldName": "bond_type_current",
+    "type": "text",
+    "description": "Current/most recent bond type"
+   },
+   {
+    "name": "BOND_AMOUNT_INITIAL",
+    "fieldName": "bond_amount_initial",
+    "type": "number",
+    "description": "Initial bail amount set at bond court "
+   },
+   {
+    "name": "BOND_AMOUNT_CURRENT",
+    "fieldName": "bond_amount_current",
+    "type": "number",
+    "description": "Current/most recent bail amount "
+   },
+   {
+    "name": "BOND_ELECTRONIC_MONITOR_FLAG_INITIAL",
+    "fieldName": "bond_electronic_monitor_flag_initial",
+    "type": "checkbox",
+    "description": "Initial electronic monitoring set as a condition of bond at bond court  "
+   },
+   {
+    "name": "BOND_ELECTROINIC_MONITOR_FLAG_CURRENT",
+    "fieldName": "bond_electroinic_monitor_flag_current",
+    "type": "checkbox",
+    "description": "Current/most recent electronic monitoring status as a condition of bond "
+   },
+   {
+    "name": "AGE_AT_INCIDENT",
+    "fieldName": "age_at_incident",
+    "type": "number",
+    "description": "Age of defendant at date of incident, as recorded by law enforcement or self-reported by defendant"
+   },
+   {
+    "name": "RACE",
+    "fieldName": "race",
+    "type": "text",
+    "description": "Race of defendant reported by law enforcement or self-reported"
+   },
+   {
+    "name": "GENDER",
+    "fieldName": "gender",
+    "type": "text",
+    "description": "Gender of defendant reported by law enforcement or self-reported"
+   },
+   {
+    "name": "INCIDENT_CITY",
+    "fieldName": "incident_city",
+    "type": "text",
+    "description": "The city where the incident took place"
+   },
+   {
+    "name": "INCIDENT_BEGIN_DATE",
+    "fieldName": "incident_begin_date",
+    "type": "calendar_date",
+    "description": "Date offense occurred/began "
+   },
+   {
+    "name": "INCIDENT_END_DATE",
+    "fieldName": "incident_end_date",
+    "type": "calendar_date",
+    "description": "Date offense ended"
+   },
+   {
+    "name": "LAW_ENFORCEMENT_AGENCY",
+    "fieldName": "law_enforcement_agency",
+    "type": "text",
+    "description": "Law enforcement agency associated with the arrest"
+   },
+   {
+    "name": "LAW_ENFORCEMENT_UNIT",
+    "fieldName": "unit",
+    "type": "text",
+    "description": "Law Enforcement Unit within Chicago Police Department associated with the arrest "
+   },
+   {
+    "name": "ARREST_DATE",
+    "fieldName": "arrest_date",
+    "type": "calendar_date",
+    "description": "Date and time of arrest"
+   },
+   {
+    "name": "FELONY_REVIEW_DATE",
+    "fieldName": "felony_review_date",
+    "type": "calendar_date",
+    "description": "Date Felony Review result was reached "
+   },
+   {
+    "name": "FELONY_REVIEW_RESULT",
+    "fieldName": "felony_review_result",
+    "type": "text",
+    "description": "Result of the Felony Review process"
+   },
+   {
+    "name": "UPDATED_OFFENSE_CATEGORY",
+    "fieldName": "updated_offense_category",
+    "type": "text",
+    "description": "Offense category for the case updated based upon the primary charge. "
+   }
+  ]
+ },
+ "dispositions": {
+  "id": "apwk-dzx8",
+  "name": "Dispositions",
+  "description": "This dataset is no longer actively maintained as of 12/30/2024. Please visit the site below to explore data dashboards published by the State\u2019s Attorney\u2019s Office beginning 2025.\n<a href=\"https://www.cookcountystatesattorney.org/data-dashboards\">Data Dashboards | Cook County State's Attorney</a>\n\nThe disposition data presented in this data reflects the culmination of the fact-finding process that leads to the resolution of a case. Each row represents a charge that has been disposed of.",
+  "attribution": "Cook County State's Attorney Office",
+  "attributionLink": "https://www.cookcountystatesattorney.org/",
+  "rowsUpdatedAt": 1775142317,
+  "license": "Public Domain",
+  "columns": [
+   {
+    "name": "CASE_ID",
+    "fieldName": "case_id",
+    "type": "number",
+    "description": "Internal unique identifier for each case"
+   },
+   {
+    "name": "CASE_PARTICIPANT_ID",
+    "fieldName": "case_participant_id",
+    "type": "number",
+    "description": "Internal unique identifier for each defendant associated with a case"
+   },
+   {
+    "name": "RECEIVED_DATE",
+    "fieldName": "received_date",
+    "type": "calendar_date",
+    "description": "Date when Felony Review Unit received the case"
+   },
+   {
+    "name": "OFFENSE_CATEGORY",
+    "fieldName": "offense_category",
+    "type": "text",
+    "description": "Broad offense category before specific charges are filed on a case"
+   },
+   {
+    "name": "PRIMARY_CHARGE_FLAG",
+    "fieldName": "primary_charge",
+    "type": "checkbox",
+    "description": "A binary flag indicating whether this row records the most severe charge against the accused"
+   },
+   {
+    "name": "CHARGE_ID",
+    "fieldName": "charge_id",
+    "type": "number",
+    "description": "Internal unique identifier for each charge filed "
+   },
+   {
+    "name": "CHARGE_VERSION_ID",
+    "fieldName": "charge_version_id",
+    "type": "number",
+    "description": "Internal unique identifier for each version of a charge associated with charges filed"
+   },
+   {
+    "name": "DISPOSITION_CHARGED_OFFENSE_TITLE",
+    "fieldName": "disposition_charged_offense_title",
+    "type": "text",
+    "description": "Specific title of the charged offense at disposition"
+   },
+   {
+    "name": "CHARGE_COUNT",
+    "fieldName": "charge_count",
+    "type": "number",
+    "description": "Number of charges associated with one defendant in one case"
+   },
+   {
+    "name": "DISPOSITION_DATE",
+    "fieldName": "disposition_date",
+    "type": "calendar_date",
+    "description": "Date charge disposed "
+   },
+   {
+    "name": "DISPOSITION_CHARGED_CHAPTER",
+    "fieldName": "disposition_charged_chapter",
+    "type": "text",
+    "description": "Legal Chapter for the charge at disposition"
+   },
+   {
+    "name": "DISPOSITION_CHARGED_ACT",
+    "fieldName": "disposition_charged_act",
+    "type": "text",
+    "description": "Legal act for the charge at disposition"
+   },
+   {
+    "name": "DISPOSITION_CHARGED_SECTION",
+    "fieldName": "disposition_charged_section",
+    "type": "text",
+    "description": "Legal section for the charge at disposition "
+   },
+   {
+    "name": "DISPOSITION_CHARGED_CLASS",
+    "fieldName": "disposition_charged_class",
+    "type": "text",
+    "description": "Legal class for the charge at disposition"
+   },
+   {
+    "name": "DISPOSITION_CHARGED_AOIC",
+    "fieldName": "disposition_charged_aoic",
+    "type": "text",
+    "description": "Administrative Office of the Illinois Courts ID for law of the charge at disposition"
+   },
+   {
+    "name": "CHARGE_DISPOSITION",
+    "fieldName": "charge_disposition",
+    "type": "text",
+    "description": "Result of the charge "
+   },
+   {
+    "name": "CHARGE_DISPOSITION_REASON",
+    "fieldName": "charge_disposition_reason",
+    "type": "text",
+    "description": "Additional information about the result of the charge  "
+   },
+   {
+    "name": "JUDGE",
+    "fieldName": "judge",
+    "type": "text",
+    "description": "Judge who oversaw the case "
+   },
+   {
+    "name": "DISPOSITION_COURT_NAME",
+    "fieldName": "court_name",
+    "type": "text",
+    "description": "Circuit Court District in which the charge was disposed"
+   },
+   {
+    "name": "DISPOSITION_COURT_FACILITY",
+    "fieldName": "court_facility",
+    "type": "text",
+    "description": "Courthouse in which the charge was disposed  "
+   },
+   {
+    "name": "AGE_AT_INCIDENT",
+    "fieldName": "age_at_incident",
+    "type": "number",
+    "description": "Age of defendant at date of incident, as recorded by law enforcement or self-reported by defendant"
+   },
+   {
+    "name": "RACE",
+    "fieldName": "race",
+    "type": "text",
+    "description": "Race of defendant reported by law enforcement or self-reported"
+   },
+   {
+    "name": "GENDER",
+    "fieldName": "gender",
+    "type": "text",
+    "description": "Gender of defendant reported by law enforcement or self-reported"
+   },
+   {
+    "name": "INCIDENT_CITY",
+    "fieldName": "incident_city",
+    "type": "text",
+    "description": "Date offense occurred/began"
+   },
+   {
+    "name": "INCIDENT_BEGIN_DATE",
+    "fieldName": "incident_begin_date",
+    "type": "calendar_date",
+    "description": "Date of when the incident began"
+   },
+   {
+    "name": "INCIDENT_END_DATE",
+    "fieldName": "incident_end_date",
+    "type": "calendar_date",
+    "description": "Date offense ended "
+   },
+   {
+    "name": "LAW_ENFORCEMENT_AGENCY",
+    "fieldName": "law_enforcement_agency",
+    "type": "text",
+    "description": "Law Enforcement agency associated with the arrest "
+   },
+   {
+    "name": "LAW_ENFORCEMENT_UNIT",
+    "fieldName": "unit",
+    "type": "text",
+    "description": "Law Enforcement Unit within Chicago Police Department associated with the arrest "
+   },
+   {
+    "name": "ARREST_DATE",
+    "fieldName": "arrest_date",
+    "type": "calendar_date",
+    "description": "Date and time of arrest "
+   },
+   {
+    "name": "FELONY_REVIEW_DATE",
+    "fieldName": "felony_review_date",
+    "type": "calendar_date",
+    "description": "Date Felony Review result was reached "
+   },
+   {
+    "name": "FELONY_REVIEW_RESULT",
+    "fieldName": "felony_review_result",
+    "type": "text",
+    "description": "Result of the Felony Review process  "
+   },
+   {
+    "name": "ARRAIGNMENT_DATE",
+    "fieldName": "arraignment_date",
+    "type": "calendar_date",
+    "description": "Date of the arraignment"
+   },
+   {
+    "name": "UPDATED_OFFENSE_CATEGORY",
+    "fieldName": "updated_offense_category",
+    "type": "text",
+    "description": "Offense category for the case updated based upon the primary charge"
+   }
+  ]
+ },
+ "sentencing": {
+  "id": "tg8v-tm6u",
+  "name": "Sentencing",
+  "description": "This dataset is no longer actively maintained as of 12/30/2024. Please visit the site below to explore data dashboards published by the State\u2019s Attorney\u2019s Office beginning 2025.\n<a href=\"https://www.cookcountystatesattorney.org/data-dashboards\">Data Dashboards | Cook County State's Attorney</a>\n\nThe sentencing data presented in this report reflects the judgment imposed by the court on people that have been found guilty. Each row represents a charge that has been sentenced.",
+  "attribution": "Cook County State's Attorney Office",
+  "attributionLink": "https://www.cookcountystatesattorney.org/",
+  "rowsUpdatedAt": 1775140745,
+  "license": "Public Domain",
+  "columns": [
+   {
+    "name": "CASE_ID",
+    "fieldName": "case_id",
+    "type": "number",
+    "description": "Internal unique identifier for each case"
+   },
+   {
+    "name": "CASE_PARTICIPANT_ID",
+    "fieldName": "case_participant_id",
+    "type": "number",
+    "description": "Internal unique identifier for each defendant associated with a case "
+   },
+   {
+    "name": "RECEIVED_DATE",
+    "fieldName": "received_date",
+    "type": "calendar_date",
+    "description": "Date when Felony Review Unit received the case"
+   },
+   {
+    "name": "OFFENSE_CATEGORY",
+    "fieldName": "offense_category",
+    "type": "text",
+    "description": "Broad offense category before specific charges are filed on a case"
+   },
+   {
+    "name": "PRIMARY_CHARGE_FLAG",
+    "fieldName": "primary_charge",
+    "type": "checkbox",
+    "description": "A binary flag indicating whether this row records the most severe charge against the accused "
+   },
+   {
+    "name": "CHARGE_ID",
+    "fieldName": "charge_id",
+    "type": "number",
+    "description": "Internal unique identifier for each charge filed "
+   },
+   {
+    "name": "CHARGE_VERSION_ID",
+    "fieldName": "charge_version_id",
+    "type": "number",
+    "description": "Internal unique identifier for each version of a charge associated with charges filed "
+   },
+   {
+    "name": "DISPOSITION_CHARGED_OFFENSE_TITLE",
+    "fieldName": "disposition_charged_offense_title",
+    "type": "text",
+    "description": "Specific title of the charged offense at disposition "
+   },
+   {
+    "name": "CHARGE_COUNT",
+    "fieldName": "charge_count",
+    "type": "number",
+    "description": "Number of charges associated with one defendant in one case "
+   },
+   {
+    "name": "DISPOSITION_DATE",
+    "fieldName": "disposition_date",
+    "type": "calendar_date",
+    "description": "Date charge disposed  "
+   },
+   {
+    "name": "DISPOSITION_CHARGED_CHAPTER",
+    "fieldName": "disposition_charged_chapter",
+    "type": "text",
+    "description": "Legal Chapter for the charge at disposition "
+   },
+   {
+    "name": "DISPOSITION_CHARGED_ACT",
+    "fieldName": "disposition_charged_act",
+    "type": "text",
+    "description": "Legal Act for the charge at disposition "
+   },
+   {
+    "name": "DISPOSITION_CHARGED_SECTION",
+    "fieldName": "disposition_charged_section",
+    "type": "text",
+    "description": "Legal Section for the charge at disposition "
+   },
+   {
+    "name": "DISPOSITION_CHARGED_CLASS",
+    "fieldName": "disposition_charged_class",
+    "type": "text",
+    "description": "Legal Class for the charge at disposition "
+   },
+   {
+    "name": "DISPOSITION_CHARGED_AOIC",
+    "fieldName": "disposition_charged_aoic",
+    "type": "text",
+    "description": "Administrative Office of the Illinois Courts ID for law of the charge at disposition"
+   },
+   {
+    "name": "CHARGE_DISPOSITION",
+    "fieldName": "charge_disposition",
+    "type": "text",
+    "description": "Result of the charge "
+   },
+   {
+    "name": "CHARGE_DISPOSITION_REASON",
+    "fieldName": "charge_disposition_reason",
+    "type": "text",
+    "description": "Additional information about the result of the charge "
+   },
+   {
+    "name": "SENTENCE_JUDGE",
+    "fieldName": "sentence_judge",
+    "type": "text",
+    "description": "Judge who oversaw the sentencing"
+   },
+   {
+    "name": "SENTENCE_COURT_NAME",
+    "fieldName": "court_name",
+    "type": "text",
+    "description": "Circuit Court District in which the sentence was determined  "
+   },
+   {
+    "name": "SENTENCE_COURT_FACILITY",
+    "fieldName": "court_facility",
+    "type": "text",
+    "description": "Courthouse in which the sentence was determined "
+   },
+   {
+    "name": "SENTENCE_PHASE",
+    "fieldName": "sentence_phase",
+    "type": "text",
+    "description": "When this version of the sentence was created"
+   },
+   {
+    "name": "SENTENCE_DATE",
+    "fieldName": "sentence_date",
+    "type": "calendar_date",
+    "description": "Date of when the charge was sentenced "
+   },
+   {
+    "name": "SENTENCE_TYPE",
+    "fieldName": "sentence_type",
+    "type": "text",
+    "description": "Broad type of sentence issued "
+   },
+   {
+    "name": "CURRENT_SENTENCE_FLAG",
+    "fieldName": "current_sentence",
+    "type": "checkbox",
+    "description": "Binary flag representing current sentence "
+   },
+   {
+    "name": "COMMITMENT_TYPE",
+    "fieldName": "commitment_type",
+    "type": "text",
+    "description": "A more specific type of sentence issued "
+   },
+   {
+    "name": "COMMITMENT_TERM",
+    "fieldName": "commitment_term",
+    "type": "text",
+    "description": "The number associated with the sentence "
+   },
+   {
+    "name": "COMMITMENT_UNIT",
+    "fieldName": "commitment_unit",
+    "type": "text",
+    "description": "Unit of sentence length "
+   },
+   {
+    "name": "LENGTH_OF_CASE_in_Days",
+    "fieldName": "length_of_case_in_days",
+    "type": "number",
+    "description": "Number of days between a charge being arraigned and a charge being sentenced "
+   },
+   {
+    "name": "AGE_AT_INCIDENT",
+    "fieldName": "age_at_incident",
+    "type": "number",
+    "description": "Age of defendant at date of incident, as recorded by law enforcement or self-reported by defendant"
+   },
+   {
+    "name": "RACE",
+    "fieldName": "race",
+    "type": "text",
+    "description": "Race of defendant reported by law enforcement or self-reported"
+   },
+   {
+    "name": "GENDER",
+    "fieldName": "gender",
+    "type": "text",
+    "description": "Gender of defendant reported by law enforcement or self-reported"
+   },
+   {
+    "name": "INCIDENT_CITY",
+    "fieldName": "incident_city",
+    "type": "text",
+    "description": "The city where the offense took place"
+   },
+   {
+    "name": "INCIDENT_BEGIN_DATE",
+    "fieldName": "incident_begin_date",
+    "type": "calendar_date",
+    "description": "Date offense occurred/began"
+   },
+   {
+    "name": "INCIDENT_END_DATE",
+    "fieldName": "incident_end_date",
+    "type": "calendar_date",
+    "description": "Date offense ended "
+   },
+   {
+    "name": "LAW_ENFORCEMENT_AGENCY",
+    "fieldName": "law_enforcement_agency",
+    "type": "text",
+    "description": "Law Enforcement agency associated with the arrest "
+   },
+   {
+    "name": "LAW_ENFORCEMENT_UNIT",
+    "fieldName": "unit",
+    "type": "text",
+    "description": "Law Enforcement Unit within Chicago Police Department associated with the arrest "
+   },
+   {
+    "name": "ARREST_DATE",
+    "fieldName": "arrest_date",
+    "type": "calendar_date",
+    "description": "Date and time of arrest"
+   },
+   {
+    "name": "FELONY_REVIEW_DATE",
+    "fieldName": "felony_review_date",
+    "type": "calendar_date",
+    "description": "Date Felony Review result was reached \n "
+   },
+   {
+    "name": "FELONY_REVIEW_RESULT",
+    "fieldName": "felony_review_result",
+    "type": "text",
+    "description": "Result of the Felony Review process "
+   },
+   {
+    "name": "ARRAIGNMENT_DATE",
+    "fieldName": "arraignment_date",
+    "type": "calendar_date",
+    "description": "Date of the arraignment"
+   },
+   {
+    "name": "UPDATED_OFFENSE_CATEGORY",
+    "fieldName": "updated_offense_category",
+    "type": "text",
+    "description": "Offense category for the case updated based upon the primary charge"
+   }
+  ]
+ },
+ "diversion": {
+  "id": "gpu3-5dfh",
+  "name": "Diversion",
+  "description": "This dataset is no longer actively maintained as of 12/30/2024. Please visit the site below to explore data dashboards published by the State\u2019s Attorney\u2019s Office beginning 2025.\n<a href=\"https://www.cookcountystatesattorney.org/data-dashboards\">Data Dashboards | Cook County State's Attorney</a>\n\nThe Diversion dataset contains information on defendants who receive a referral to a diversion program, including the type of program and date of referral; each row is a program to which a defendant has been referred.",
+  "attribution": "Cook County State's Attorney's Office",
+  "attributionLink": "https://www.cookcountystatesattorney.org/",
+  "rowsUpdatedAt": 1775139822,
+  "license": "Public Domain",
+  "columns": [
+   {
+    "name": "CASE_ID",
+    "fieldName": "case_id",
+    "type": "number",
+    "description": "Internal unique identifier for each case "
+   },
+   {
+    "name": "CASE_PARTICIPANT_ID",
+    "fieldName": "case_participant_id",
+    "type": "number",
+    "description": "Internal unique identifier for each defendant associated with a case "
+   },
+   {
+    "name": "RECEIVED_DATE",
+    "fieldName": "received_date",
+    "type": "calendar_date",
+    "description": "Date when Felony Review Unit received the case"
+   },
+   {
+    "name": "OFFENSE_CATEGORY",
+    "fieldName": "offense_category",
+    "type": "text",
+    "description": "Broad offense category before specific charges are filed on a case "
+   },
+   {
+    "name": "DIVERSION_PROGRAM",
+    "fieldName": "diversion_program",
+    "type": "text",
+    "description": "Diversion program the defendant was referred to"
+   },
+   {
+    "name": "REFERRAL_DATE",
+    "fieldName": "referral_date",
+    "type": "calendar_date",
+    "description": "Date when a defendant was referred to diversion program "
+   },
+   {
+    "name": "DIVERSION_COUNT",
+    "fieldName": "diversion_count",
+    "type": "number",
+    "description": "Number of diversion programs one defendant was referred to "
+   },
+   {
+    "name": "PRIMARY_CHARGE_OFFENSE_TITLE",
+    "fieldName": "primary_charge_offense_title",
+    "type": "text",
+    "description": "Most severe charge defendant is faced with and usually the way the case is referred to "
+   },
+   {
+    "name": "STATUTE",
+    "fieldName": "statute",
+    "type": "text",
+    "description": "Legal statute for the charge (Consisted of Chapter, Act, Section) "
+   },
+   {
+    "name": "RACE",
+    "fieldName": "race",
+    "type": "text",
+    "description": "Race of defendant reported by law enforcement or self-reported"
+   },
+   {
+    "name": "GENDER",
+    "fieldName": "gender",
+    "type": "text",
+    "description": "Gender of defendant reported by law enforcement or self-reported"
+   },
+   {
+    "name": "DIVERSION_RESULT",
+    "fieldName": "diversion_result",
+    "type": "text",
+    "description": "Result of diversion program "
+   },
+   {
+    "name": "DIVERSION_CLOSED_DATE",
+    "fieldName": "diversion_closed_date",
+    "type": "calendar_date",
+    "description": "Date of failing or graduating from diversion program"
+   }
+  ]
+ }
+}
