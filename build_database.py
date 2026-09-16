@@ -45,7 +45,7 @@ TABLE_DESCRIPTIONS = {
 JOIN_HINTS = {
     "case_id": "SAO case identifier; joins all five tables (one case can have several participants)",
     "case_participant_id": "Defendant within a case; joins all five tables",
-    "charge_id": "Charge identifier; joins initiation, dispositions and sentencing",
+    "charge_id": "Charge identifier; joins initiation, dispositions and sentencing (co-defendants share it: key with case_participant_id)",
     "charge_version_id": "Version of the charge (charges are amended); joins initiation, dispositions and sentencing",
     "received_date": "Date the case was received by the SAO (the series' time axis)",
 }
@@ -105,23 +105,31 @@ def run_validation(con) -> int:
         ck.query(con, f"{t} non-empty", f"SELECT COUNT(*) FROM {t}", lambda n: n > 10000, lambda n: f"{n:,} rows")
         ck.query(con, f"{t} received_date parsed (> 99.9%)", f"SELECT COUNT(received_date) * 1.0 / COUNT(*) FROM {t}",
                  lambda v: v > 0.999, lambda v: f"{v:.3%}")
-        ck.query(con, f"{t} received_date within 2010-2024", f"SELECT MIN(received_date)::DATE, MAX(received_date)::DATE FROM {t}",
-                 lambda r: str(r[0]) >= "2010-01-01" and str(r[1]) <= "2024-12-31", lambda r: f"{r[0]} .. {r[1]}")
+        # intake/initiation/diversion start with cases received in 2011; dispositions and sentencing
+        # also carry older cases (received back to the 1980s) that were disposed 2011-2024
+        floor = "2011-01-01" if t in ("intake", "initiation", "diversion") else "1900-01-01"
+        ck.query(con, f"{t} earliest received_date >= {floor[:4]}", f"SELECT MIN(received_date)::DATE FROM {t}", lambda d, f=floor: str(d) >= f, str)
+        ck.query(con, f"{t} latest received_date <= 2024-12-31", f"SELECT MAX(received_date)::DATE FROM {t}", lambda d: str(d) <= "2024-12-31", str)
         ck.query(con, f"{t} case_id and case_participant_id present", f"SELECT COUNT(*) FROM {t} WHERE case_id IS NULL OR case_participant_id IS NULL",
                  lambda n: n == 0, str)
     ck.query(con, "intake: one row per case participant", "SELECT COUNT(*) - COUNT(DISTINCT case_participant_id) FROM intake", lambda n: n == 0, str)
-    ck.query(con, "initiation: (charge_id, charge_version_id) unique", "SELECT COUNT(*) - COUNT(DISTINCT (charge_id, charge_version_id)) FROM initiation",
-             lambda n: n == 0, str)
-    ck.query(con, "dispositions participants exist in intake (> 95%)",
+    # co-defendants share charge ids, so the charge key is unique only together with the participant
+    ck.query(con, "initiation: (charge_id, charge_version_id, case_participant_id) unique",
+             "SELECT COUNT(*) - COUNT(DISTINCT (charge_id, charge_version_id, case_participant_id)) FROM initiation", lambda n: n == 0, str)
+    ck.query(con, "dispositions participants received 2011+ exist in intake (> 99%)",
              "SELECT COUNT(DISTINCT d.case_participant_id) FILTER (WHERE i.case_participant_id IS NOT NULL) * 1.0 / COUNT(DISTINCT d.case_participant_id) "
-             "FROM dispositions d LEFT JOIN intake i USING (case_participant_id)", lambda v: v > 0.95, lambda v: f"{v:.1%}")
+             "FROM dispositions d LEFT JOIN intake i USING (case_participant_id) WHERE d.received_date >= '2011-01-01'", lambda v: v > 0.99, lambda v: f"{v:.2%}")
+    ck.query(con, "dispositions: pre-2011 received cases are a minority (< 12%)",
+             "SELECT COUNT(*) FILTER (WHERE received_date < '2011-01-01') * 1.0 / COUNT(*) FROM dispositions", lambda v: v < 0.12, lambda v: f"{v:.2%}")
     ck.query(con, "sentencing rows join a disposition (> 99%)",
              "SELECT COUNT(*) FILTER (WHERE d.charge_id IS NOT NULL) * 1.0 / COUNT(*) FROM sentencing s "
              "LEFT JOIN (SELECT DISTINCT charge_id, charge_version_id FROM dispositions) d USING (charge_id, charge_version_id)",
              lambda v: v > 0.99, lambda v: f"{v:.2%}")
-    ck.query(con, "sentencing: one current sentence per charge version at most",
-             "SELECT COUNT(*) FROM (SELECT charge_id, charge_version_id FROM sentencing WHERE current_sentence GROUP BY 1, 2 HAVING COUNT(*) > 1)",
-             lambda n: n == 0, str)
+    # a charge can carry several current sentence rows (components: prison + probation, fines ...)
+    ck.query(con, "sentencing: current_sentence_flag populated and mostly true (> 90%)",
+             "SELECT COUNT(*) FILTER (WHERE current_sentence_flag) * 1.0 / COUNT(*) FROM sentencing", lambda v: v > 0.9, lambda v: f"{v:.1%}")
+    ck.query(con, "sentencing: primary_charge_flag is BOOLEAN", "SELECT data_type FROM information_schema.columns WHERE table_name = 'sentencing' AND column_name = 'primary_charge_flag'",
+             lambda s: s == "BOOLEAN", str)
     ck.query(con, "bond amounts are DOUBLE", "SELECT data_type FROM information_schema.columns WHERE table_name = 'initiation' AND column_name = 'bond_amount_initial'",
              lambda s: s == "DOUBLE", str)
     for (t, c), (bad, nn) in sorted(DATE_AUDIT.items()):

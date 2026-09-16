@@ -10,11 +10,11 @@ charge by charge.
 
 | Table | One row per | Rows | Portal dataset |
 |-------|-------------|-----:|----------------|
-| `intake` | potential defendant brought in for felony review | [INTAKE] | [3k7z-hchi](https://datacatalog.cookcountyil.gov/d/3k7z-hchi) |
-| `initiation` | charge at case initiation (statute, class, bond, arraignment) | [INITIATION] | [7mck-ehwz](https://datacatalog.cookcountyil.gov/d/7mck-ehwz) |
-| `dispositions` | charge disposed (plea, verdict, dismissal, judge, court) | [DISPOSITIONS] | [apwk-dzx8](https://datacatalog.cookcountyil.gov/d/apwk-dzx8) |
-| `sentencing` | sentence imposed on a disposed charge | [SENTENCING] | [tg8v-tm6u](https://datacatalog.cookcountyil.gov/d/tg8v-tm6u) |
-| `diversion` | diversion-program referral | [DIVERSION] | [gpu3-5dfh](https://datacatalog.cookcountyil.gov/d/gpu3-5dfh) |
+| `intake` | potential defendant brought in for felony review | 528,111 | [3k7z-hchi](https://datacatalog.cookcountyil.gov/d/3k7z-hchi) |
+| `initiation` | charge at case initiation (statute, class, bond, arraignment) | 1,228,260 | [7mck-ehwz](https://datacatalog.cookcountyil.gov/d/7mck-ehwz) |
+| `dispositions` | charge disposed (plea, verdict, dismissal, judge, court) | 1,080,014 | [apwk-dzx8](https://datacatalog.cookcountyil.gov/d/apwk-dzx8) |
+| `sentencing` | sentence imposed on a disposed charge | 305,884 | [tg8v-tm6u](https://datacatalog.cookcountyil.gov/d/tg8v-tm6u) |
+| `diversion` | diversion-program referral | 29,421 | [gpu3-5dfh](https://datacatalog.cookcountyil.gov/d/gpu3-5dfh) |
 
 Keys: `case_id` (a case can have several participants), `case_participant_id` (the
 defendant within a case, present in every table), `charge_id` + `charge_version_id`
@@ -59,10 +59,17 @@ is kept in `<column>_raw`.
 - **PROMIS conversion records.** Cases converted from the previous case-management system
   in 2011 carry placeholder values (`participant_status` / `law_enforcement_agency` =
   "PROMIS Conversion"); their dates before 2011 are the original incident dates.
+- **Dispositions and sentencing reach back before 2011.** Those two tables hold every charge
+  disposed or sentenced 2011-2024, including cases received as early as the 1980s (9.0% of
+  disposition rows, 8.2% of sentencing rows); intake, initiation and diversion start with cases
+  received in 2011, so pre-2011 cases have no intake row.
+- **Co-defendants share `charge_id`.** A charge version is unique only together with
+  `case_participant_id`; join on all three.
 - **Rows are charges, not people.** `dispositions` and `sentencing` have one row per
   charge version; filter `primary_charge_flag` for a per-defendant view and
-  `current_sentence_flag` for the sentence that stands. `charge_version_id` increments
-  when a charge is amended.
+  `current_sentence_flag` for the sentence that stands (a charge can have several current
+  rows, one per sentence component such as prison plus probation). `charge_version_id`
+  increments when a charge is amended.
 - **`received_date` is the time axis** the Office used in its own reports; `arrest_date`
   and the incident dates come from the arresting agency and can be years earlier.
 - Demographics are as recorded by the Office; `age_at_incident` is at the incident date.
